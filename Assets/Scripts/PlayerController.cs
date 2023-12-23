@@ -6,18 +6,17 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Animator animator;
-    public Rigidbody2D rb;
-    
+    Transform playerTransform;
 
-    public float runSpeed = 1f;
+    public float runSpeed = 40f;
 
     float horizontalMove = 0f;
     bool facingRight = true;
-    private Vector3 m_Velocity = Vector3.zero;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        playerTransform = GetComponent<Transform>();
     }
 
     private void Update()
@@ -27,16 +26,15 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Attack1");
         }
 
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed * Time.fixedDeltaTime;
+        horizontalMove = Input.GetAxis("Horizontal") * runSpeed;
 
-        animator.SetFloat("MoveSpeed", Math.Abs(Input.GetAxisRaw("Horizontal") * runSpeed));
+        animator.SetFloat("MoveSpeed", Math.Abs(horizontalMove));
     }
 
     private void FixedUpdate()
     {
-        Vector3 targetVelocity = new Vector2(horizontalMove * 10f, rb.velocity.y);
-        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref m_Velocity, .05f);
-        rb.AddForce(targetVelocity);
+
+        playerTransform.Translate(Vector3.right * Input.GetAxis("Horizontal") * Time.deltaTime);
 
         if (horizontalMove > 0 && !facingRight)
         {
@@ -52,8 +50,8 @@ public class PlayerController : MonoBehaviour
     {
         facingRight = !facingRight;
 
-        Vector3 theScale = transform.localScale;
+        Vector3 theScale = playerTransform.localScale;
         theScale.x *= -1;
-        transform.localScale = theScale;
+        playerTransform.localScale = theScale;
     }
 }
