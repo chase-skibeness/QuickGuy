@@ -45,6 +45,7 @@ public class PController2 : MonoBehaviour
         if (health <= 0)
         {
             animator.SetTrigger("Death");
+            Destroy(gameObject);
         }
 
         timeSinceLastAttack += Time.deltaTime;
@@ -187,6 +188,6 @@ public class PController2 : MonoBehaviour
 
     public void DestroyObj()
     {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }
