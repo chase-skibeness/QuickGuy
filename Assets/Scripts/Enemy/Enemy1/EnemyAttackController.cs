@@ -6,9 +6,8 @@ public class EnemyAttackController : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
-
             // Calculate direction from player to enemy
             Vector2 direction = collision.transform.position - transform.parent.position;
             direction = direction.normalized; // Normalize the direction vector

@@ -31,6 +31,7 @@ public class PController2 : MonoBehaviour
     private bool isGrounded;
     private bool canDoubleJump;
     private bool facingRight = true;
+    private bool isBlocking = false;
 
     void Start()
     {
@@ -95,6 +96,18 @@ public class PController2 : MonoBehaviour
             }
             timeSinceLastAttack = 0;
         }
+
+        if ((Input.GetMouseButton(1) || Input.GetButton("Fire2")))
+        {
+            animator.SetBool("Blocking", true);
+            isBlocking = true;
+        } else if ((Input.GetMouseButtonUp(1) || Input.GetButtonUp("Fire2")))
+        {
+            animator.SetBool("Blocking", false);
+            isBlocking = false;
+        }
+
+
     }
 
     void FixedUpdate()
@@ -162,8 +175,14 @@ public class PController2 : MonoBehaviour
 
     public void ApplyDamage(int damage)
     {
-        animator.SetTrigger("Damaged");
-        health -= damage;
+        if (isBlocking)
+        {
+            animator.SetTrigger("Blocked");
+        } else
+        {
+            animator.SetTrigger("Damaged");
+            health -= damage;
+        }
     }
 
     public void DestroyObj()

@@ -151,6 +151,9 @@ MonoBehaviour:
   speed: 2.5
   detectionRange: 5
   health: 3
+  attackTimer: 0
+  attackWaitTime: 2
+  attackRange: 3
 --- !u!95 &5796739801148846790
 Animator:
   serializedVersion: 5
@@ -182,6 +185,7 @@ GameObject:
   - component: {fileID: 3500463605839501510}
   - component: {fileID: 5124122130050826405}
   - component: {fileID: 8640562897517780352}
+  - component: {fileID: 5950905923096374193}
   m_Layer: 0
   m_Name: club
   m_TagString: Untagged
@@ -197,7 +201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2481852124119364711}
   m_LocalRotation: {x: 0, y: 0, z: -0.5533916, w: 0.83292127}
-  m_LocalPosition: {x: 0.66, y: 0.42, z: -1}
+  m_LocalPosition: {x: 0.66, y: 0.42, z: 0}
   m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -244,7 +248,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: acbfb94680d09c84e9653637e401f026, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -338,3 +342,15 @@ PolygonCollider2D:
       - {x: 0.0075, y: -0.73249996}
       - {x: 0.022499999, y: -0.6825}
       - {x: 0.037499998, y: -0.6525}
+--- !u!114 &5950905923096374193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2481852124119364711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fd0772a0cc5994f9c69a5a170223fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
