@@ -24,6 +24,8 @@ public class EnemyController : MonoBehaviour
     public float attackWaitTime = 2f;
     public float attackRange = 3f;
 
+    private bool isDisabled = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +47,7 @@ public class EnemyController : MonoBehaviour
 
         attackTimer += Time.deltaTime;
 
-        if ((distanceToPlayer <= attackRange) && attackTimer >= attackWaitTime)
+        if ((distanceToPlayer <= attackRange) && attackTimer >= attackWaitTime && !isDisabled)
         {
             animator.SetTrigger("Attack");
             attackTimer = 0f;
@@ -54,13 +56,13 @@ public class EnemyController : MonoBehaviour
              
         }
 
-        if ((distanceToPlayer < detectionRange) && (distanceToPlayer > givenSpace))
+        if ((distanceToPlayer < detectionRange) && (distanceToPlayer > givenSpace) && !isDisabled)
         {
             if (Math.Abs(rb.velocity.x) < speed)
             {
-Vector2 direction = (playerTransform.position - transform.position).normalized;
-            direction.y = 0;
-            rb.AddForce(direction * speed);
+                Vector2 direction = (playerTransform.position - transform.position).normalized;
+                direction.y = 0;
+                rb.AddForce(direction * speed);
             }
             
         }
@@ -68,17 +70,14 @@ Vector2 direction = (playerTransform.position - transform.position).normalized;
 
     public void ApplyDamage(int damage)
     {
+        animator.SetTrigger("Damaged");
         health -= damage;
     }
 
     private void Death()
     {
-        Destroy(this.gameObject);
+        isDisabled = true;
         animator.SetTrigger("Death");
-    }
-
-    public void DestroyGameObj()
-    {
-        Destroy(this.gameObject);
+        Destroy(this.gameObject, 2f);
     }
 }

@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PController2 : MonoBehaviour
 {
     Rigidbody2D rb;
     Animator animator;
+
+    public Sprite emptyHeart;
+    public Sprite fullHeart;
+    public Image[] hearts;
 
     [SerializeField]
     private float moveSpeed = 100f;
@@ -20,8 +25,9 @@ public class PController2 : MonoBehaviour
     private float attackCooldownTime = 2f;
 
     [SerializeField]
-    private int health = 10;
+    private int maxHealth = 5;
 
+    private int health;
     private float attackCooldownTimer = 0f;
     private bool attackCooldown = false;
     private int comboStep = 0;
@@ -32,20 +38,26 @@ public class PController2 : MonoBehaviour
     private bool canDoubleJump;
     private bool facingRight = true;
     private bool isBlocking = false;
+    private bool isDisabled = false;
+    private float timeToEnabled;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        health = maxHealth;
     }
 
     void Update()
     {
 
+        UpdateHealthBar();
+
         if (health <= 0)
         {
+            isDisabled = true;
             animator.SetTrigger("Death");
-            Destroy(gameObject);
+            Destroy(gameObject, 2f);
         }
 
         timeSinceLastAttack += Time.deltaTime;
@@ -65,7 +77,7 @@ public class PController2 : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
 
         // Jump logic
-        if ((isGrounded || !isGrounded && canDoubleJump) && (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump")))
+        if ((isGrounded || !isGrounded && canDoubleJump) && (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump")) && !isDisabled)
         {
             rb.velocity = new Vector2(rb.velocity.x, 0); // Reset the y velocity
             rb.AddForce(new Vector2(rb.velocity.x, jumpForce), ForceMode2D.Impulse);
@@ -77,7 +89,7 @@ public class PController2 : MonoBehaviour
         }
 
         // attack logic
-        if ((Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1")) && !attackCooldown)
+        if ((Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1")) && !attackCooldown && !isDisabled)
         {
             if ((timeSinceLastAttack <= comboTimingWindow) && comboStep < maxCombo)
             {
@@ -98,7 +110,7 @@ public class PController2 : MonoBehaviour
             timeSinceLastAttack = 0;
         }
 
-        if ((Input.GetMouseButton(1) || Input.GetButton("Fire2")))
+        if ((Input.GetMouseButton(1) || Input.GetButton("Fire2")) && !isDisabled)
         {
             animator.SetBool("Blocking", true);
             isBlocking = true;
@@ -115,21 +127,46 @@ public class PController2 : MonoBehaviour
     {
         float currentSpeed = moveSpeed;
 
-        if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && isGrounded)
+        if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && isGrounded && !isDisabled)
         {
             currentSpeed *= 2.0f; // Double the speed if Shift is held
         }
 
         float horizontalMovement = horizontalInput * currentSpeed * Time.deltaTime;
-        rb.velocity = new Vector2(horizontalMovement, rb.velocity.y);
 
-        if (horizontalMovement > 0 && !facingRight)
+        if (!isDisabled)
+        {
+            rb.velocity = new Vector2(horizontalMovement, rb.velocity.y);
+        }
+
+        if (horizontalMovement > 0 && !facingRight && !isDisabled)
         {
             Flip();
         }
-        else if (horizontalMovement < 0 && facingRight)
+        else if (horizontalMovement < 0 && facingRight && !isDisabled)
         {
             Flip();
+        }
+    }
+
+    void UpdateHealthBar()
+    {
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i < health)
+            {
+                hearts[i].sprite = fullHeart;
+            } else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+            if (i < maxHealth)
+            {
+                hearts[i].enabled = true;
+            } else
+            {
+                hearts[i].enabled = false;
+            }
         }
     }
 
@@ -186,8 +223,10 @@ public class PController2 : MonoBehaviour
         }
     }
 
-    public void DestroyObj()
+    public void Disable(float disableLength)
     {
-        Destroy(gameObject);
+        isDisabled = true;
+        timeToEnabled = disableLength;
     }
+
 }
