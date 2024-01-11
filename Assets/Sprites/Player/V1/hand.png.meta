@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 457700d1bdc728d4ebca27408e862b3b
+guid: dbb0325628537fa4381c713af0f8c919
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -115,91 +115,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: quickguy idle_0
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 0
-        width: 71
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3c94e391a0ce76b4ba9023b1eeec9638
-      internalID: 2085442260
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: quickguy idle_1
-      rect:
-        serializedVersion: 2
-        x: 164
-        y: 0
-        width: 71
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8f834c14e2c60c742bf26d35311e1c06
-      internalID: 975263503
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: quickguy idle_2
-      rect:
-        serializedVersion: 2
-        x: 292
-        y: 0
-        width: 71
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a125b42eae1639d4994154594a154969
-      internalID: -2145740055
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: quickguy idle_3
-      rect:
-        serializedVersion: 2
-        x: 421
-        y: 0
-        width: 71
-        height: 126
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a61cb4868f41f4e4a98dfa2df5df721d
-      internalID: 572008439
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -210,11 +126,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      quickguy idle_3: 572008439
-      quickguy idle_0: 2085442260
-      quickguy idle_1: 975263503
-      quickguy idle_2: -2145740055
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
