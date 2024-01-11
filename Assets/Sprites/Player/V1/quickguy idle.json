@@ -1,0 +1,103 @@
+{ "frames": {
+   "quickguy idle 0.ase": {
+    "frame": { "x": 0, "y": 0, "w": 128, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 128 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 100
+   },
+   "quickguy idle 1.ase": {
+    "frame": { "x": 128, "y": 0, "w": 128, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 128 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 100
+   },
+   "quickguy idle 2.ase": {
+    "frame": { "x": 256, "y": 0, "w": 128, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 128 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 100
+   },
+   "quickguy idle 3.ase": {
+    "frame": { "x": 384, "y": 0, "w": 128, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 128 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 100
+   },
+   "quickguy idle 4.ase": {
+    "frame": { "x": 512, "y": 0, "w": 128, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 128 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 100
+   },
+   "quickguy idle 5.ase": {
+    "frame": { "x": 640, "y": 0, "w": 128, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 128 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 100
+   },
+   "quickguy idle 6.ase": {
+    "frame": { "x": 768, "y": 0, "w": 128, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 128 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 100
+   },
+   "quickguy idle 7.ase": {
+    "frame": { "x": 896, "y": 0, "w": 128, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 128 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 100
+   },
+   "quickguy idle 8.ase": {
+    "frame": { "x": 1024, "y": 0, "w": 128, "h": 128 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 128, "h": 128 },
+    "sourceSize": { "w": 128, "h": 128 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.3.2-x64",
+  "image": "quickguy idle.png",
+  "format": "RGBA8888",
+  "size": { "w": 1152, "h": 128 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Legs" },
+   { "name": "right leg", "group": "Legs", "opacity": 255, "blendMode": "normal" },
+   { "name": "left leg", "group": "Legs", "opacity": 255, "blendMode": "normal" },
+   { "name": "left foot", "group": "Legs", "opacity": 255, "blendMode": "normal" },
+   { "name": "right foot", "group": "Legs", "opacity": 255, "blendMode": "normal" },
+   { "name": "Body" },
+   { "name": "body", "group": "Body", "opacity": 255, "blendMode": "normal" },
+   { "name": "left arm", "group": "Body", "opacity": 255, "blendMode": "normal" },
+   { "name": "right arm", "group": "Body", "opacity": 255, "blendMode": "normal" },
+   { "name": "Head" },
+   { "name": "head", "group": "Head", "opacity": 255, "blendMode": "normal" },
+   { "name": "right eye", "group": "Head", "opacity": 255, "blendMode": "normal" },
+   { "name": "left eye", "group": "Head", "opacity": 255, "blendMode": "normal" },
+   { "name": "mouth", "group": "Head", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}
