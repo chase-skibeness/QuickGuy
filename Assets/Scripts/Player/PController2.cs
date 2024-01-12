@@ -76,6 +76,14 @@ public class PController2 : MonoBehaviour
 
         horizontalInput = Input.GetAxis("Horizontal");
 
+        if (Mathf.Abs(horizontalInput) > 0 && isGrounded)
+        {
+            animator.SetBool("IsWalking", true);
+        } else
+        {
+            animator.SetBool("IsWalking", false);
+        }
+
         // Jump logic
         if ((isGrounded || !isGrounded && canDoubleJump) && (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump")) && !isDisabled)
         {
