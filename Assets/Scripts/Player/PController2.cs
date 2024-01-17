@@ -76,7 +76,7 @@ public class PController2 : MonoBehaviour
 
         horizontalInput = Input.GetAxis("Horizontal");
 
-        if (Mathf.Abs(horizontalInput) > 0 && isGrounded)
+        if (Mathf.Abs(horizontalInput) > 0 && isGrounded && !isBlocking)
         {
             animator.SetBool("IsWalking", true);
         } else
@@ -85,7 +85,7 @@ public class PController2 : MonoBehaviour
         }
 
         // Jump logic
-        if ((isGrounded || !isGrounded && canDoubleJump) && (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump")) && !isDisabled)
+        if ((isGrounded || !isGrounded && canDoubleJump) && (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump")) && !isDisabled && !isBlocking)
         {
             rb.velocity = new Vector2(rb.velocity.x, 0); // Reset the y velocity
             rb.AddForce(new Vector2(rb.velocity.x, jumpForce), ForceMode2D.Impulse);
@@ -97,7 +97,7 @@ public class PController2 : MonoBehaviour
         }
 
         // attack logic
-        if ((Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1")) && !attackCooldown && !isDisabled)
+        if ((Input.GetMouseButtonDown(0) || Input.GetButtonDown("Fire1")) && !attackCooldown && !isDisabled && !isBlocking)
         {
             if ((timeSinceLastAttack <= comboTimingWindow) && comboStep < maxCombo)
             {
@@ -135,23 +135,23 @@ public class PController2 : MonoBehaviour
     {
         float currentSpeed = moveSpeed;
 
-        if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && isGrounded && !isDisabled)
+        if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && isGrounded && !isDisabled && !isBlocking)
         {
             currentSpeed *= 2.0f; // Double the speed if Shift is held
         }
 
         float horizontalMovement = horizontalInput * currentSpeed * Time.deltaTime;
 
-        if (!isDisabled)
+        if (!isDisabled && !isBlocking)
         {
             rb.velocity = new Vector2(horizontalMovement, rb.velocity.y);
         }
 
-        if (horizontalMovement > 0 && !facingRight && !isDisabled)
+        if (horizontalMovement > 0 && !facingRight && !isDisabled && !isBlocking)
         {
             Flip();
         }
-        else if (horizontalMovement < 0 && facingRight && !isDisabled)
+        else if (horizontalMovement < 0 && facingRight && !isDisabled && !isBlocking)
         {
             Flip();
         }
