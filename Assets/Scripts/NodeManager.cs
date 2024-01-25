@@ -2,19 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NodeManager : MonoBehaviour
 {
 
     public GameObject levelNodeText;
+    public AssetBundle bundle;
 
     [SerializeField]
-    private bool playerHere = false;
+    private bool playerHere;
 
+    [SerializeField]
+    private string levelToLoad;
 
     // Update is called once per frame
     void Update()
     {
+        if ((/*Input.GetButton("Start") ||*/ Input.GetKey(KeyCode.Return)) && playerHere)
+        {
+            SceneManager.LoadScene(levelToLoad);
+        }
         
     }
 

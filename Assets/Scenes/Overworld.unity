@@ -8595,7 +8595,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelNodeText: {fileID: 318320794}
+  bundle: {fileID: 0}
   playerHere: 0
+  levelToLoad: Level_1
 --- !u!58 &1911287391
 CircleCollider2D:
   m_ObjectHideFlags: 0
